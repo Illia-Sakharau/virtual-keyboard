@@ -79,7 +79,9 @@ textarea {
   font-weight: 700;
   font-size: 16px;
 
-  transition: all 0.5s;
+  cursor: pointer;
+
+  transition: all 0.2s;
 
   &_size {
     flex-grow: 1;

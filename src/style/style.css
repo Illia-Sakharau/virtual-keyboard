@@ -449,7 +449,8 @@ textarea {
   border-radius: 8px;
   font-weight: 700;
   font-size: 16px;
-  transition: all 0.5s;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 .key_size {
   flex-grow: 1;
