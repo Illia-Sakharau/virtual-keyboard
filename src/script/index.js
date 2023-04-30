@@ -92,22 +92,32 @@ document.body.appendChild(main);
 
 
 function clickDownKey() {
-    this.classList.add('key_pressed');
-    console.log(textArea.selectionStart);
-}
-function clickUpKey() {
-  this.classList.remove('key_pressed');
-  console.log(this.dataset.code);
+  this.classList.add('key_pressed');
+  
+  const startPos = textArea.selectionStart;
+  const endPos = textArea.selectionEnd;
+  const scrollTop = textArea.scrollTop;
 
-  return false;
+  textArea.value = textArea.value.substring(0, startPos) + KEYS[this.dataset.code][state] + textArea.value.substring(endPos, textArea.value.length);
+
+  textArea.selectionStart = startPos + 1;
+  textArea.selectionEnd = startPos + 1;
+
+  event.preventDefault();
+}
+
+function clickUpKey() {
+this.classList.remove('key_pressed');
+
+return false;
 }
 
 
 
 document.onkeydown  = function (event) {
-  clickDownKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
+clickDownKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
 };
 
 document.onkeyup = function (event) {
-  clickUpKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
+clickUpKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
 };
