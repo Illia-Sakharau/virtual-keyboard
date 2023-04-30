@@ -1,92 +1,36 @@
 /* eslint-disable */
 import KEYS from './data/keys.js';
-import Line from './components/line.js'
+import Line from './components/line.js';
+import CreateKeyboard from './components/keyboard.js';
 
-const body = document.querySelector('body');
 let state = 0;
 
+const body = document.querySelector('body');
+const template = `
+<header class="wrapper">
+        <h1>Virtual Keyboard</h1>
+    </header>
+    <main class="wrapper">
 
+    </main>
+    <footer class="wrapper">
+        <p class="description">Клавиатура создана в операционной системе Windows</p>
+        <p class="description">Для переключения языка комбинация: левыe ctrl + alt</p>
+    </footer>
+`
+document.body.innerHTML = template;
 
+const main = document.querySelector('main');
+const textAreaSection = document.createElement('section');
+const textArea = document.createElement('textarea');
 
-// create keyboard
-
-const main = document.createElement('main');
 main.classList.add('wrapper');
 
-const textAreaSection = document.createElement('section');
 textAreaSection.classList.add('text-area');
-const textArea = document.createElement('textarea');
+
 textAreaSection.appendChild(textArea);
-
-
-
-
-const keyBoard = document.createElement('div');
-keyBoard.classList.add('key-board');
-
-let line = new Line;
-
-if(KEYS) {
-  let count = 0;
-
-  for (let key in KEYS) {
-
-    if (count < 14) {
-      line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
-    }
-
-    if (count === 14) {
-      keyBoard.appendChild(line.getLine());
-      line = new Line;
-    }
-
-    if (count >= 14 && count < 29) {
-      line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
-    }  
-
-    if (count === 29) {
-      keyBoard.appendChild(line.getLine());
-      line = new Line;
-    }
-
-    if (count >= 29 && count < 42) {
-      line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
-    }  
-    
-    if (count === 42) {
-      keyBoard.appendChild(line.getLine());
-      line = new Line;
-    }
-
-    if (count >= 42 && count < 55) {
-      line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
-    }  
-    
-    if (count === 55) {
-      keyBoard.appendChild(line.getLine());
-      line = new Line;
-    }
-
-    if (count >= 55) {
-      line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
-    }  
-
-    if (count >= 55) {
-      keyBoard.appendChild(line.getLine());
-    }
-    
-    
-    count++;
-
-  }
-}
-
-
-
 main.appendChild(textAreaSection);
-
-main.appendChild(keyBoard);
-document.body.appendChild(main);
+main.appendChild(CreateKeyboard(state, clickDownKey, clickUpKey));
 
 
 
