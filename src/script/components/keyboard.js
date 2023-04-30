@@ -15,7 +15,7 @@ export default function createKeyboard(state, clickDownKey, clickUpKey) {
     for (let key in KEYS) {
 
       if (count < 14) {
-        line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
+        line.addKey(key, KEYS[key], state, clickDownKey, clickUpKey);
       }
 
       if (count === 14) {
@@ -24,7 +24,7 @@ export default function createKeyboard(state, clickDownKey, clickUpKey) {
       }
 
       if (count >= 14 && count < 29) {
-        line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
+        line.addKey(key, KEYS[key], state, clickDownKey, clickUpKey);
       }  
 
       if (count === 29) {
@@ -33,7 +33,7 @@ export default function createKeyboard(state, clickDownKey, clickUpKey) {
       }
 
       if (count >= 29 && count < 42) {
-        line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
+        line.addKey(key, KEYS[key], state, clickDownKey, clickUpKey);
       }  
       
       if (count === 42) {
@@ -42,7 +42,7 @@ export default function createKeyboard(state, clickDownKey, clickUpKey) {
       }
 
       if (count >= 42 && count < 55) {
-        line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
+        line.addKey(key, KEYS[key], state, clickDownKey, clickUpKey);
       }  
       
       if (count === 55) {
@@ -51,7 +51,7 @@ export default function createKeyboard(state, clickDownKey, clickUpKey) {
       }
 
       if (count >= 55) {
-        line.addKey(key, KEYS[key][state], clickDownKey, clickUpKey);
+        line.addKey(key, KEYS[key], state, clickDownKey, clickUpKey);
       }  
 
       if (count >= 55) {

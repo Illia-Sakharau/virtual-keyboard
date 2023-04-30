@@ -11,8 +11,8 @@ export default class Line {
     return this.line;
   }
 
-  addKey(keyCode, char, event1, event2) {
-    const myKey = new CreateKey(keyCode, char);
+  addKey(keyCode, KEY, state, event1, event2) {
+    const myKey = new CreateKey(keyCode, KEY, state);
     const key = myKey.getKey();
     key.addEventListener("mousedown", event1);
     key.addEventListener("mouseup", event2);
