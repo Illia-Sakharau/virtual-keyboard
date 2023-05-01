@@ -1,13 +1,8 @@
-/* eslint-disable */
-
-/**
- * Создание клавиши
+/**  * Создание клавиши
  * @param {string} keyCode
  * @param {array} KEY
  * @param {number} state
- *  
  */
-
 
 export default class Key {
   constructor(keyCode, KEY, state) {
@@ -16,13 +11,7 @@ export default class Key {
     this.key.setAttribute('data-code', keyCode);
     this.key.classList.add('key-board__key', 'key');
 
-
-    if (KEY[4]) {
-      this.keyText = KEY[4];      
-    } else {
-      this.keyText = KEY[state];
-    }
-
+    this.keyText = KEY[4] || KEY[state];
 
     if (KEY[5]) {
       this.key.classList.add('key_size');
@@ -31,8 +20,6 @@ export default class Key {
     if (KEY[6]) {
       this.key.classList.add('key_color');
     }
-
-
 
     this.setChar(this.keyText);
   }

@@ -1,5 +1,4 @@
-/* eslint-disable */
-import CreateKey from './key.js';
+import CreateKey from './key';
 
 export default class Line {
   constructor() {
@@ -14,8 +13,8 @@ export default class Line {
   addKey(keyCode, KEY, state, event1, event2) {
     const myKey = new CreateKey(keyCode, KEY, state);
     const key = myKey.getKey();
-    key.addEventListener("mousedown", event1);
-    key.addEventListener("mouseup", event2);
+    key.addEventListener('mousedown', event1);
+    key.addEventListener('mouseup', event2);
 
     this.line.appendChild(key);
   }
