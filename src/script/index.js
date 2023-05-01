@@ -53,8 +53,6 @@ function modificateText(step, char) {
 }
 
 function reverseCase(key) {
-
-
   if(key.dataset.code === 'CapsLock') {
     key.classList.toggle('key_active');
   };
@@ -63,6 +61,18 @@ function reverseCase(key) {
     state++;
   } else {
     state--;
+  }
+
+  for (let key in KEYS) {
+    document.querySelector(`.key[data-code="${key}"]`).textContent = KEYS[key][4] || KEYS[key][state];
+  }
+}
+
+function switchLanguage() {
+  if (state < 2) {
+    state +=2;
+  } else {
+    state -=2;
   }
 
   for (let key in KEYS) {
@@ -105,11 +115,11 @@ return false;
 }
 
 
+document.addEventListener('keydown', function (event) {
+  if (event.ctrlKey && event.code === 'AltLeft') switchLanguage();
+  clickDownKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
+})
 
-document.onkeydown  = function (event) {
-clickDownKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
-};
-
-document.onkeyup = function (event) {
-clickUpKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
-};
+document.addEventListener('keyup', function (event) {
+  clickUpKey.call(document.querySelector(`.key[data-code="${event.code}"]`));
+})
