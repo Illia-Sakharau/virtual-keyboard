@@ -1,5 +1,5 @@
-import KEYS from './data/keys';
-import CreateKeyboard from './components/keyboard';
+import KEYS from './data/keys.js';
+import CreateKeyboard from './components/keyboard.js';
 
 let state = +localStorage.getItem('state') || 0;
 

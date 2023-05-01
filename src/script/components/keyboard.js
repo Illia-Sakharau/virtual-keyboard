@@ -1,5 +1,5 @@
-import KEYS from '../data/keys';
-import Line from './line';
+import KEYS from '../data/keys.js';
+import Line from './line.js';
 
 export default function createKeyboard(state, clickDownKey, clickUpKey) {
   const keyBoard = document.createElement('section');

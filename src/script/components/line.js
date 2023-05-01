@@ -1,4 +1,4 @@
-import CreateKey from './key';
+import CreateKey from './key.js';
 
 export default class Line {
   constructor() {
