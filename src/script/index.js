@@ -3,7 +3,7 @@ import KEYS from './data/keys.js';
 import Line from './components/line.js';
 import CreateKeyboard from './components/keyboard.js';
 
-let state = 0;
+let state = +localStorage.getItem('state') || 0;
 
 const body = document.querySelector('body');
 const template = `
@@ -15,7 +15,7 @@ const template = `
     </main>
     <footer class="wrapper">
         <p class="description">Клавиатура создана в операционной системе Windows</p>
-        <p class="description">Для переключения языка комбинация: левыe ctrl + alt</p>
+        <p class="description">Для переключения языка комбинация: ctrl + левыe alt</p>
     </footer>
 `
 document.body.innerHTML = template;
@@ -31,6 +31,11 @@ textAreaSection.classList.add('text-area');
 textAreaSection.appendChild(textArea);
 main.appendChild(textAreaSection);
 main.appendChild(CreateKeyboard(state, clickDownKey, clickUpKey));
+
+
+if (state % 2 === 1) {
+  document.querySelector(`.key[data-code="CapsLock"]`).classList.toggle('key_active');
+}
 
 
 function modificateText(step, char) {
@@ -59,8 +64,10 @@ function reverseCase(key) {
   
   if (state % 2 === 0) {
     state++;
+    localStorage.setItem('state', state);
   } else {
     state--;
+    localStorage.setItem('state', state);
   }
 
   for (let key in KEYS) {
@@ -71,8 +78,10 @@ function reverseCase(key) {
 function switchLanguage() {
   if (state < 2) {
     state +=2;
+    localStorage.setItem('state', state);
   } else {
     state -=2;
+    localStorage.setItem('state', state);
   }
 
   for (let key in KEYS) {
